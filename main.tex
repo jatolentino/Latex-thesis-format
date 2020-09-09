@@ -1,0 +1,276 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage{scrextend}
+\usepackage{tocloft}
+\usepackage{fontspec}
+\usepackage{changepage}
+\setmainfont{Times New Roman}
+\usepackage[spanish,english]{babel}
+\usepackage{mathrsfs, amsmath, amsfonts}
+\usepackage{fontspec}
+\usepackage{setspace}
+\setstretch{1.9}
+\newenvironment{myfont}{\fontspec{Arial}}{\par \setstretch{1}}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\newsavebox{\imagebox}
+\usepackage{upgreek}
+\usepackage{titlesec}
+\usepackage{makecell,tabularx}
+\usepackage{calc}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{empheq,mathtools}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{breqn}
+\usepackage{array}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=Fuchsia]{hyperref}
+\usepackage{listings}
+\usepackage{blindtext}
+\usepackage{eqnarray}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{bigstrut} 
+\usepackage{etoolbox}
+\usepackage[labelfont=bf]{caption}
+\usepackage[left=4.00cm, right=2.50cm, top=4cm, bottom=2.50cm]{geometry}
+\author{Jose Tolentino}
+\makeatletter
+\DeclareRobustCommand{\volume}{\text{\volumedash}V}
+\newcommand{\volumedash}{%
+	\makebox[0pt][l]{%
+		\ooalign{\hfil\hphantom{$\m@th V$}\hfil\cr\kern0.08em--\hfil\cr}%
+	}%
+}
+\usepackage[none]{hyphenat}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=9999
+\hbadness=10000
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}.}
+
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.}
+\titleformat*{\section}{\bfseries\normalsize}
+\titleformat{\subsection}[block]{\bfseries\hspace{2.4em}}{\thesubsection}{1em}{} %% identation subsec
+
+\usepackage{blindtext,tocloft,calc}
+
+\renewcommand{\cftdotsep}{1}
+\renewcommand{\cftfigdotsep}{1} %
+\renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftsecdotsep}}% dot leaders in bold
+\renewcommand{\cftsecleader}{\bfseries\cftdotfill{\cftsecdotsep}}
+
+\renewcommand{\cftsecpagefont}{\bfseries}   % bold number of section in TOC
+
+\renewcommand{\cfttoctitlefont}{\normalfont\MakeUppercase\bfseries}
+
+\addto\captionsenglish{\renewcommand{\contentsname}{\bfseries\centerline{ÍNDICE DE CONTENIDO}}}
+\addto\captionsenglish{\renewcommand{\chaptername}{CAPÍTULO }}
+\renewcommand{\cftchapaftersnumb}{\\ \vskip -3.6em}%{\vskip 40.5em}
+\renewcommand{\cftchapnumwidth}{0pt}
+
+\renewcommand\cftchappresnum{\chaptername~}
+
+\renewcommand{\cftsecfont}{\normalfont\bfseries}   % Bold sections
+
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{2em}
+\setlength{\cftsubsubsecindent}{4em} 
+
+\setlength{\cftsecnumwidth}{2em}
+\setlength{\cftsubsecnumwidth}{2.8em}  % 2.8
+\setlength{\cftsubsubsecnumwidth}{3.55em}  %3.5em
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\centering\normalfont\sffamily\normalsize\bfseries}
+{\chaptertitlename\ \thechapter}{11pt}{\normalsize}
+\setlength{\parindent}{0pt}
+\usepackage{afterpage}
+\newenvironment{hyphenatedparagraph}
+{\par\hyphenpenalty=50 \exhyphenpenalty 50}
+{\par}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}.}
+\renewcommand{\cftloftitlefont}{\normalfont\normalsize\MakeUppercase}
+\addto\captionsenglish{\renewcommand{\listfigurename}{\bfseries\centerline{ÍNDICE DE FIGURAS}}}
+%
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}.}
+\renewcommand{\cftlottitlefont}{\normalfont\normalsize\MakeUppercase}
+\addto\captionsenglish{\renewcommand{\listtablename}{\bfseries\centerline{ÍNDICE DE TABLAS}}}
+\renewcommand{\cftfigpresnum}{Figura }
+\renewcommand{\cfttabpresnum}{Tabla }
+\newlength{\mylenf}
+\settowidth{\mylenf}{\cftfigpresnum}
+
+\setlength{\cftfignumwidth}{\mylenf+3em}
+\setlength{\cfttabnumwidth}{\mylenf+3em}
+
+\captionsetup[figure]{labelsep=space,textfont=bf}
+\addto\captionsenglish{\renewcommand{\figurename}{Figura}}
+\addto\captionsenglish{\renewcommand{\tablename}{Tabla}}
+\captionsetup[table]{labelsep=space,textfont=bf}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+% No distance betwen figures/tables in LOF/ from different chapter
+\addtocontents{lof}{\protect\addvspace{10\p@}}%
+\addtocontents{lot}{\protect\addvspace{10\p@}}%
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{lof}{\protect\noaddvspace}
+\addtocontents{lot}{\protect\noaddvspace}
+%
+
+\def\@makechapterhead#1{%
+	\vspace*{51\p@}%
+	{\parindent \z@ \normalfont \centering \bfseries
+		\ifnum \c@secnumdepth >\m@ne
+		\@chapapp\space \thechapter
+		\par\nobreak
+		\vskip -8.4\p@% <--- Chapter title & Chapter text
+		\fi
+		\interlinepenalty\@M
+		\bfseries #1\par\nobreak
+		\vskip 40.1\p@% <------- Chapter text and first paragraph
+}}
+
+
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+	#2%
+	\def\@currentlabel{#2}%
+	\phantomsection\label{#1}\endgroup
+}
+\makeatother
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\patchcmd{\chapter}{plain}{chapterstart}{}{}
+%\patchcmd{\listoffigures}{plain}{figuresstart}{}{}
+\pagestyle{fancy}
+
+%\fancyhead[C]{\thepage}
+\fancyhead{}
+\chead{\thepage}
+\fancyfoot{}
+%\fancyhead[RO, RE]{\thepage}
+\renewcommand{\headrulewidth}{0pt} \renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{chapterstart}{
+	\renewcommand{\headrulewidth}{0pt}%
+	\fancyhf{}}
+	
+
+\usepackage{adjustbox}
+\usepackage{stackengine}
+\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
+%\usepackage[table,xcdraw]{xcolor}
+\usepackage{colortbl}
+
+%%%%%%%%%%%%%%% BILBIOGRAFIA %%%%%%%%%%%%%%%
+\usepackage[square,numbers]{natbib}
+
+\addto\captionsenglish{\renewcommand{\bibname}{\normalfont\bfseries\centerline{REFERENCIAS BIBLIOGRÁFICAS}}}
+
+\bibliographystyle{apalike}
+%\usepackage{cite}
+%\addbibresource{\myrefs.bib}
+\usepackage{verbatim}
+
+
+%%%%%%%%%%%%%%%%% SUB SUB SUB SECTION %%%%%%%%%%%%%%%
+\titleclass{\subsubsubsection}{straight}[\subsection]
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection\arabic{subsubsubsection}.}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+\titleformat{\subsubsection}[block]{\bfseries\hspace{0em}}{\thesubsubsection}{1em}{}
+%\titleformat{\subsubsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titleformat{\subsubsubsection}[block]{\bfseries\hspace{0em}}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 2ex minus .2ex}{1.5ex plus .2ex}
+\makeatletter
+\def\toclevel@subsubsubsection{4}
+\def\l@subsubsubsection{\@dottedtocline{4}{6em}{4.3em}}  %{7em}{4em}} {6em}{4.3em}} FOR TOC
+\renewcommand{\@dotsep}{1}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\makeatother
+
+
+\newcommand{\zerodisplayskips}{%
+	\setlength{\abovedisplayskip}{0.6em}%
+	\setlength{\belowdisplayskip}{0.6em}}%
+
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+\usepackage{lscape}
+\usepackage[final]{pdfpages}
+\usepackage{listings}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage[numbered]{matlab-prettifier}
+\lstdefinestyle{mymatstyle}{%
+	style=Matlab-editor,
+	basicstyle=\sffamily,
+	basicstyle=\singlespacing,
+	frame=none,
+	numberstyle=\scriptsize,
+	xleftmargin=1.8em,
+}
+\titleformat*{\chapter}{\bfseries\rmfamily\centering}
+
+\begin{document}
+	\urlstyle{same}
+	\input{cover}
+	\input{dedicatoria}\label{key}
+	\input{resumen}
+	\frontmatter
+
+	\addtocontents{toc}{\protect\thispagestyle{empty}}       
+	\tableofcontents
+
+	\newpage
+	\addtocontents{lof}{\protect\thispagestyle{empty}}
+	\listoffigures
+	\newpage
+	\addtocontents{lot}{\protect\thispagestyle{empty}}
+	\listoftables
+	\mainmatter
+	\setcounter{page}{1}   
+	\chapter*{PRÓLOGO}
+	\addcontentsline{toc}{chapter}{PRÓLOGO}
+	La presente tesis describe la...
+	\include{INTRODUCCIÓN}
+	\include{MARCO_TEÓRICO}
+    \include{METODOLOGÍA}  % CÁLCULOS Y/O APLICACIONES Y OBTENCIÓN DE RESULTADOS
+	\include{Capitcuatro}
+	\chapter*{CONCLUSIONES}
+	\addcontentsline{toc}{chapter}{CONCLUSIONES}
+	\begin{enumerate}
+		\item Se verifica que...
+	\end{enumerate}
+	\chapter*{RECOMENDACIONES}
+	\addcontentsline{toc}{chapter}{RECOMENDACIONES}
+	\begin{enumerate}
+		\item Se recomienda...
+	\end{enumerate}
+			%	\include{Referencias}
+			%	\printbibliography
+			%	\addcontentsline{toc}{chapter}{Bibliography}
+			% Format for bibliography
+			\bibliographystyle{apalike}
+	\nocite{*}
+	\begingroup
+	
+	\let\itshape\upshape
+	
+    \bibliography{myrefsv1}
+	\addcontentsline{toc}{chapter}{REFERENCIAS BIBLIOGRÁFICAS}
+	\nocite{*}
+	\endgroup
+	\input{ackn}  % ANEXOS
+\end{document}
