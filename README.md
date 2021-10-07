@@ -10,7 +10,7 @@
 Install the following requirements, with at least the said versions:
 
 * [TEXstudio 4.0.0](https://www.texstudio.org/): Download & install it
-* [MiKTeX 21.6-x64](https://miktex.org/download): Download & install it
+* [MiKTeX 21.8-x64](https://miktex.org/download): Download & install it
 * [Tex Live 20210325](https://ctan.dcc.uchile.cl/systems/texlive/Images/): Download the iso, unrar it and run the install-tl-windows.bat file (takes hours to install all the packages!)
 
 ## Set up your texstudio PDF compiler
