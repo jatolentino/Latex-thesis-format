@@ -26,7 +26,7 @@ This is because the file: `metodologia.tex` doesn't exist yet, although you can 
 * You may want to comment chapters when redacting your thesis to speed up the compilation process.
 
 
-Finally proceed to compile a first test, during compilation if you are prompted with a request to install another package, just accept it and move forward. Might be the case that you will be prompted with the package installation message more than one time in the first compilation, just accept all of them, TEXstudio will download them automatically and you just need to confirm all the requests.
+Finally proceed to compile a first test, during compilation if you are prompted with a request to install another package, just accept it and move forward. Might be the case that you will be prompted with the package installation message more than once in the first compilation, just accept all of them, TEXstudio will download them automatically and you just need to confirm all the requests.
 
 ## How to use
 
